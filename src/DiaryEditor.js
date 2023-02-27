@@ -1,6 +1,10 @@
-import { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const DiaryEditor = ({ onCreate }) => {
+  useEffect(() => {
+    console.log("DiaryEditor 렌더");
+  });
+
   const authorInput = useRef();
   const contentInput = useRef();
 
@@ -56,7 +60,7 @@ const DiaryEditor = ({ onCreate }) => {
         />
       </div>
       <div>
-        오늘의 감정점수　:　
+        <span>오늘의 감정점수 : </span>
         <select
           name="emotion"
           value={state.emotion}
@@ -76,4 +80,4 @@ const DiaryEditor = ({ onCreate }) => {
   );
 };
 
-export default DiaryEditor;
+export default React.memo(DiaryEditor);
